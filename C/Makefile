@@ -3,7 +3,7 @@ GRACE = Grace
 SULLY = Sully
 
 COLLEEN_SRCS = ./Colleen_dir/Colleen.c
-GRACE_SRCS = ./Grace.c
+GRACE_SRCS = ./Grace_dir/Grace.c
 SULLY_SRCS = ./Sully.c
 
 CFLAGS = -Wall -Wextra -Werror
