@@ -1,10 +1,9 @@
 /*
    a
 */
-#include<stdio.h>
-void b(){char*c="/*\n   a\n*/\n#include<stdio.h>\nvoid b(){char*c=%c%s%2$c;printf(c,10,34,";printf(c,10,34,c);}
-int main(void) {
+#include <stdio.h>
+char*s="/*%c   a%c*/%c#include <stdio.h>%cchar*s=%c%s%c;void b(){printf(s,10,10,10,10,34,s,34,10,10,10,10,10,10,10);}int main(void){%c/*%c    b%c*/%cb();}%c";void b(){printf(s,10,10,10,10,34,s,34,10,10,10,10,10,10,10);}int main(void){
 /*
-   b
+    b
 */
 b();}
