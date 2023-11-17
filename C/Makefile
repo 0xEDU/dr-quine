@@ -1,8 +1,8 @@
-COLLEEN = Coleeen
+COLLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
-COLLEEN_SRCS = ./Colleen.c
+COLLEEN_SRCS = ./Colleen_dir/Colleen.c
 GRACE_SRCS = ./Grace.c
 SULLY_SRCS = ./Sully.c
 
@@ -16,10 +16,12 @@ grace: $(GRACE)
 
 sully: $(SULLY)
 
-$(COLLEEN):
+$(COLLEEN): $(COLLEEN_SRCS)
 	clang $(CFLAGS) -o $(COLLEEN) $(COLLEEN_SRCS)
-$(GRACE):
+	
+$(GRACE): $(GRACE_SRCS)
 	clang $(CFLAGS) -o $(GRACE) $(GRACE_SRCS)
+
 $(SULLY):
 	clang $(CFLAGS) -o $(SULLY) $(SULLY_SRCS)
 
