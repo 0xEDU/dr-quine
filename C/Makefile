@@ -22,7 +22,7 @@ $(COLLEEN): $(COLLEEN_SRCS)
 $(GRACE): $(GRACE_SRCS)
 	clang $(CFLAGS) -o $(GRACE) $(GRACE_SRCS)
 
-$(SULLY):
+$(SULLY): $(SULLY_SRCS)
 	clang $(CFLAGS) -o $(SULLY) $(SULLY_SRCS)
 
 clean:
