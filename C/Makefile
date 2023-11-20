@@ -4,7 +4,7 @@ SULLY = Sully
 
 COLLEEN_SRCS = ./Colleen_dir/Colleen.c
 GRACE_SRCS = ./Grace_dir/Grace.c
-SULLY_SRCS = ./Sully.c
+SULLY_SRCS = ./Sully_dir/Sully.c
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -29,5 +29,6 @@ clean:
 	rm -rf $(COLLEEN) $(GRACE) $(SULLY)
 
 fclean: clean
+	rm -rf SULLY_*
 
 re: fclean all
