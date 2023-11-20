@@ -29,6 +29,6 @@ clean:
 	rm -rf $(COLLEEN) $(GRACE) $(SULLY)
 
 fclean: clean
-	rm -rf SULLY_*
+	rm -rf Sully_*
 
 re: fclean all
