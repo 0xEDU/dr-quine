@@ -2,9 +2,9 @@ COLLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
-COLLEEN_SRCS = ./Colleen_dir/Colleen.c
-GRACE_SRCS = ./Grace_dir/Grace.c
-SULLY_SRCS = ./Sully_dir/Sully.c
+COLLEEN_SRCS = ./colleen/Colleen.c
+GRACE_SRCS = ./grace/Grace.c
+SULLY_SRCS = ./sully/Sully.c
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -29,6 +29,5 @@ clean:
 	rm -rf $(COLLEEN) $(GRACE) $(SULLY)
 
 fclean: clean
-	rm -rf Sully_*
 
 re: fclean all
