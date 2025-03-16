@@ -23,7 +23,7 @@ grace: $(GRACE)
 sully: $(SULLY)
 
 $(COLLEEN): $(COLLEEN_OBJS)
-	@ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc $(COLLEEN_OBJS) -o $(COLLEEN)
+	@gcc -lc $(COLLEEN_OBJS) -o $(COLLEEN)
 	@echo "\033[1;92m[SUCCESS] Linked "$(COLLEEN)"!\033[0m"
 
 $(PATH_OBJS)%.o: $(PATH_COLLEEN)%.s
