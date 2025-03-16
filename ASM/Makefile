@@ -12,7 +12,7 @@ SULLY_SRCS = ./sully/Sully.s
 
 COLLEEN_OBJS = ${COLLEEN_SRCS:%.s=$(PATH_OBJS)%.o}
 
-SFLAGS = -felf64
+ASFLAGS = -felf64
 
 all: $(COLLEEN) $(GRACE) $(SULLY)
 
@@ -28,15 +28,15 @@ $(COLLEEN): $(COLLEEN_OBJS)
 
 $(PATH_OBJS)%.o: $(PATH_COLLEEN)%.s
 	@mkdir -p $(PATH_OBJS)
-	@nasm $(SFLAGS) $< -o $@
+	@nasm $(ASFLAGS) $< -o $@
 	@echo "\033[1;92m[SUCCESS] Object" $< "created!\033[0m"
 
 	
 $(GRACE): $(GRACE_SRCS)
-	nasm $(SFLAGS) -o $(GRACE) $(GRACE_SRCS)
+	nasm $(ASFLAGS) -o $(GRACE) $(GRACE_SRCS)
 
 $(SULLY): $(SULLY_SRCS)
-	nasm $(SFLAGS) -o $(SULLY) $(SULLY_SRCS)
+	nasm $(ASFLAGS) -o $(SULLY) $(SULLY_SRCS)
 
 clean:
 	rm -rf $(COLLEEN) $(GRACE) $(SULLY)
