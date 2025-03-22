@@ -10,10 +10,12 @@ COLLEEN_SRCS = Colleen.s
 PATH_GRACE = ./grace/
 GRACE_SRCS = Grace.s
 
-SULLY_SRCS = ./sully/Sully.s
+PATH_SULLY = ./sully/
+SULLY_SRCS = Sully.s
 
 COLLEEN_OBJS = ${COLLEEN_SRCS:%.s=$(PATH_OBJS)%.o}
 GRACE_OBJS = ${GRACE_SRCS:%.s=$(PATH_OBJS)%.o}
+SULLY_OBJS = ${SULLY_SRCS:%.s=$(PATH_OBJS)%.o}
 
 ASFLAGS = -felf64
 GRACEFLAGS = -nostartfiles
@@ -44,8 +46,14 @@ $(PATH_OBJS)%.o: $(PATH_GRACE)%.s
 	@nasm $(ASFLAGS) $< -o $@
 	@echo "\033[1;92m[SUCCESS] Object" $< "created!\033[0m"
 
-$(SULLY): $(SULLY_SRCS)
-	nasm $(ASFLAGS) -o $(SULLY) $(SULLY_SRCS)
+$(SULLY): $(SULLY_OBJS)
+	@gcc -lc $(SULLY_OBJS) -o $(SULLY)
+	@echo "\033[1;92m[SUCCESS] Linked "$(SULLY)"!\033[0m"
+
+$(PATH_OBJS)%.o: $(PATH_SULLY)%.s
+	@mkdir -p $(PATH_OBJS)
+	@nasm $(ASFLAGS) $< -o $@
+	@echo "\033[1;92m[SUCCESS] Object" $< "created!\033[0m"
 
 clean:
 	rm -rf $(COLLEEN) $(GRACE) $(SULLY)
