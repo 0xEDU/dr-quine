@@ -1,7 +1,8 @@
 section .rodata
-	f db "%d", 0xA, 0
 	s db "Sully_%d.s", 0
+	w db "w", 0
 	c db "SULLY=Sully_%d; nasm -felf64 $SULLY.s -o $SULLY.o; gcc $SULLY.o -o $SULLY; ./$SULLY", 0
+	e db "echo oi"
 	i dq 5
 
 section .text
@@ -9,6 +10,10 @@ global main
 extern snprintf
 extern printf
 extern exit
+extern fopen
+extern fclose
+extern fprintf
+extern system
 main:
 cmp byte [rel i], 0
 je .end
@@ -26,21 +31,19 @@ dec rcx
 
 call snprintf wrt ..plt
 
-sub rsp, 96
-
 lea rdi, [rsp]
-mov rsi, 96
-lea rdx, [rel c]
-mov rcx, [rel i]
-mov r8, [rel i]
-mov r9, [rel i]
-dec rcx
-push rcx
+lea rsi, [rel w]
+call fopen wrt ..plt
 
+mov rdi, rax
+lea rsi, [rel c]
+mov rdx, [rel i]
+dec rdx
+call fprintf wrt ..plt
 
+lea rdi, [rel e]
+call system wrt ..plt
 
-mov rdi, rsp
-call printf wrt ..plt
 add rsp, 24
 jmp .end
 
