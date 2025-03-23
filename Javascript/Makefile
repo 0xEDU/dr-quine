@@ -27,7 +27,9 @@ $(GRACE): $(GRACE_SRCS)
 	@chmod +x ./$(GRACE)
 
 $(SULLY): $(SULLY_SRCS)
-	clang $(CFLAGS) -o $(SULLY) $(SULLY_SRCS)
+	@echo "#!$(NODE_PATH)" > $(SULLY)
+	@cat $(SULLY_SRCS) >> $(SULLY)
+	@chmod +x ./$(SULLY)
 
 clean:
 	rm -rf $(COLLEEN) $(GRACE) $(SULLY)
