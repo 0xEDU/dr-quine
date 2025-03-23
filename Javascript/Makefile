@@ -4,7 +4,7 @@ SULLY = Sully
 
 COLLEEN_SRCS = ./colleen/Colleen.js
 GRACE_SRCS = ./grace/Grace.js
-SULLY_SRCS = ./sully/Sully.c
+SULLY_SRCS = ./sully/Sully.js
 
 NODE_PATH=$(shell which node)
 
