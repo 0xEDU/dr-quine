@@ -3,7 +3,7 @@ GRACE = Grace
 SULLY = Sully
 
 COLLEEN_SRCS = ./colleen/Colleen.js
-GRACE_SRCS = ./grace/Grace.c
+GRACE_SRCS = ./grace/Grace.js
 SULLY_SRCS = ./sully/Sully.c
 
 NODE_PATH=$(shell which node)
@@ -22,7 +22,9 @@ $(COLLEEN): $(COLLEEN_SRCS)
 	@chmod +x ./$(COLLEEN)
 	
 $(GRACE): $(GRACE_SRCS)
-	clang $(CFLAGS) -o $(GRACE) $(GRACE_SRCS)
+	@echo "#!$(NODE_PATH)" > $(GRACE)
+	@cat $(GRACE_SRCS) >> $(GRACE)
+	@chmod +x ./$(GRACE)
 
 $(SULLY): $(SULLY_SRCS)
 	clang $(CFLAGS) -o $(SULLY) $(SULLY_SRCS)
